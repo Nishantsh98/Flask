@@ -1,6 +1,6 @@
 # Create a simple Flask application
 
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,jsonify
 
 # create the flask app
 
@@ -17,15 +17,15 @@ def math_operation():
     num2=request.json["num2"]
 
     if operation=='add':
-        result=num1+num2
+        result=int(num1)+int(num2)
     elif operation=='mul':
-        result=num1*num2
+        result=int(num1)*int(num2)
     elif operation=='div':
-        result=num1/num2
+        result=int(num1)/int(num2)
     else:
-        result=num1-num2
+        result=int(num1)-int(num2)
     
-    return result
+    return jsonify(result)
 
 if __name__=='__main__':
     app.run()
